@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css3-Loading</title>
+  <style>
+    .container {
+      position: relative;
+      background: #fff;
+      border-radius: 2px;
+      min-height: calc(100vh - 96px);
+    }
+  </style>
+</head>
+
+<body>
+  <section class="container">
+    <ul>
+
+    </ul>
+  </section>
+  <script>
+
+  </script>
+  <script>
+    var fso = new ActiveXObject("Scripting.FileSystemObject");
+    var curPath = location.href;
+
+    curPath = curPath.substr(8, curPath.length - 16);
+
+    //listall("F:\\software\\新建文件夹");
+    listall(curPath);
+
+    function listall(infd) {
+      //fd    d:
+
+      var fd = fso.GetFolder(infd + "\\"); //这里的变量一定要用var  申明
+
+      var fe = new Enumerator(fd.files); //这里的变量一定要用var  申明
+      while (!fe.atEnd()) {
+
+        var src = "<img src=\"" + fe.item() + "\"/>";
+        document.write(src);
+        document.write("<br>");
+
+        fe.moveNext();
+      }
+
+    }
+  </script>
+</body>
+
+</html>
